@@ -32,7 +32,7 @@ export default function DashboardNav() {
           <Typography variant="h6" className={classes.title}>
             Dashboard
           </Typography>
-          <Button color="inherit">Log Out</Button>
+          <Button color="inherit" onClick={event=>window.location.href="/"}>Log Out</Button>
         </Toolbar>
       </AppBar>
     </div>

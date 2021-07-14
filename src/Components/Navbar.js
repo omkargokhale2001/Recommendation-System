@@ -32,7 +32,6 @@ export default function Navbar() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-          
           </Typography>
           <Button color="inherit" style={{backgroundColor:"white",color:"black",size:"large"}} onClick={event=>window.location.href='/login'}>Login / Sign Up </Button>
         </Toolbar>

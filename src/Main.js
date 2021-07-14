@@ -5,7 +5,6 @@ import MainSection from './Components/MidSection';
 import Navbar from './Components/Navbar';
 import sections from './Properties/sections';
 import mainFeaturedPost from './Properties/mainFeaturedPost';
-import Album from './Components/Dashboard';
 
 
 
@@ -16,7 +15,6 @@ function Main() {
              <Navbar sections={sections}/>
              <Header post={mainFeaturedPost}/>
              <MainSection/>
-             <Album/>
             <Footer/>
         </div>
     )

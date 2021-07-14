@@ -87,11 +87,11 @@ export default function SignIn() {
             label="Remember me"
           />
           <Button
-            type="submit"
             fullWidth
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={event=>window.location.href="/dashboard"}
           >
             Sign In
           </Button>
