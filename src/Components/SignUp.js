@@ -70,15 +70,19 @@ export default function SignUp() {
     passwordReg(e.target.value)
   }
 
-  const saveDetails = ()=>{
+  const saveDetails = (e)=>{
+    e.preventDefault()
     const obj = {
       "name":firstname+" "+lastname,
       'email':email,
       'password':password
     }
     console.log(obj)
-    Axios('http://localhost:3001/users',obj).then((response)=>{
+    Axios.post('http://localhost:3001/users',obj).then((response)=>{
       console.log(response)
+      if(response.status===201){
+        window.location.href="/dashboard"
+      }
     }).catch((e)=>{
       console.log(e)
     })

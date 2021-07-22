@@ -61,6 +61,12 @@ export default function SignIn() {
       'password':password
     }).then((response)=>{
       console.log(response)
+      if(response.data.ret){
+        window.location.href="/dashboard"
+      }else{
+        alert("User not found please signup")
+        window.location.href = "/signup"
+      }
     }).catch((e)=>{
       console.log(e)
     })
