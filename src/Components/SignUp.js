@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -12,6 +12,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import Axios from 'axios';
 
 function Copyright() {
   return (
@@ -49,6 +50,40 @@ const useStyles = makeStyles((theme) => ({
 export default function SignUp() {
   const classes = useStyles();
 
+  const [firstname,firstnameReg] = useState("")
+  const [lastname,lastnameReg] = useState("")
+  const [email,setmailReg] = useState("")
+  const [password,passwordReg] = useState("")
+
+  const firstnameHandler = (e)=>{
+    firstnameReg(e.target.value)
+  }
+
+  const lastnameHandler = (e)=>{
+    lastnameReg(e.target.value)
+  }
+  const emailsaveHandler = (e)=>{
+    setmailReg(e.target.value)
+  };
+
+  const passsaveHandler = (e)=>{
+    passwordReg(e.target.value)
+  }
+
+  const saveDetails = ()=>{
+    const obj = {
+      "name":firstname+" "+lastname,
+      'email':email,
+      'password':password
+    }
+    console.log(obj)
+    Axios('http://localhost:3001/users',obj).then((response)=>{
+      console.log(response)
+    }).catch((e)=>{
+      console.log(e)
+    })
+  }
+
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -70,6 +105,7 @@ export default function SignUp() {
                 fullWidth
                 id="firstName"
                 label="First Name"
+                onChange={(e)=>{firstnameHandler(e)}}
                 autoFocus
               />
             </Grid>
@@ -82,6 +118,7 @@ export default function SignUp() {
                 label="Last Name"
                 name="lastName"
                 autoComplete="lname"
+                onChange={lastnameHandler}
               />
             </Grid>
             <Grid item xs={12}>
@@ -93,6 +130,7 @@ export default function SignUp() {
                 label="Email Address"
                 name="email"
                 autoComplete="email"
+                onChange={(e)=>{emailsaveHandler(e)}}
               />
             </Grid>
             <Grid item xs={12}>
@@ -105,6 +143,7 @@ export default function SignUp() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                onChange={(e)=>{passsaveHandler(e)}}
               />
             </Grid>
             <Grid item xs={12}>
@@ -120,6 +159,7 @@ export default function SignUp() {
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={saveDetails}
           >
             Sign Up
           </Button>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -12,6 +12,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import Axios from 'axios';
 
 function Copyright() {
   return (
@@ -49,6 +50,30 @@ const useStyles = makeStyles((theme) => ({
 export default function SignIn() {
   const classes = useStyles();
 
+  const [email,setmailReg] = useState("")
+  const [password,passwordReg] = useState("")
+
+  const sendDetails = ()=>{
+    console.log(email)
+    console.log(password)
+    Axios.post('http://localhost:3001/users/login',{
+      'email':email,
+      'password':password
+    }).then((response)=>{
+      console.log(response)
+    }).catch((e)=>{
+      console.log(e)
+    })
+  }
+
+  const emailsaveHandler = (e)=>{
+    setmailReg(e.target.value)
+  };
+
+  const passsaveHandler = (e)=>{
+    passwordReg(e.target.value)
+  }
+
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -59,7 +84,7 @@ export default function SignIn() {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} noValidate >
           <TextField
             variant="outlined"
             margin="normal"
@@ -70,6 +95,7 @@ export default function SignIn() {
             name="email"
             autoComplete="email"
             autoFocus
+            onChange={(e)=>emailsaveHandler(e)}
           />
           <TextField
             variant="outlined"
@@ -81,6 +107,7 @@ export default function SignIn() {
             type="password"
             id="password"
             autoComplete="current-password"
+            onChange = {(e)=>{passsaveHandler(e)}}
           />
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
@@ -91,7 +118,8 @@ export default function SignIn() {
             variant="contained"
             color="primary"
             className={classes.submit}
-            onClick={event=>window.location.href="/dashboard"}
+            // onClick={event=>window.location.href="/dashboard"}
+            onClick = {sendDetails}
           >
             Sign In
           </Button>
