@@ -4,14 +4,15 @@ This is an older version of this project. The newer version is available [here](
 This is a recommendation system created for an ecommerce website. The website uses collaborative filtering for the recommendations. The algorithm used is Matrix Factorization. 
 
 You can find below the process flow of the project:
-![image](https://user-images.githubusercontent.com/86973280/212533055-107f4a23-7a8b-43e1-9d12-d8173113b7cb.png)
+![image](https://user-images.githubusercontent.com/86973280/212533184-38303642-e596-47a8-a868-88311fdbf055.png)
 
 
 
-# [Android Application]() 
+
+# [Frontend]() 
 
 
 
-# [Flask Application]()
+# [Backend]()
 
 
