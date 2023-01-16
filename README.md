@@ -9,10 +9,12 @@ You can find below the process flow of the project:
 
 
 
-# [Frontend]() 
+# [Frontend](https://github.com/shakti-prog/hackerxfront) 
+The frontend of the the website displays the top 6 highly recommended products to to user.
 
 
 
-# [Backend]()
+# [Backend](https://github.com/shakti-prog/django_back)
+The backend uses Django for loading the machine learning model that provides product recommendations. It also consists of a Node.js backend for user authentication.
 
 
